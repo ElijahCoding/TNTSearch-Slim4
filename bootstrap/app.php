@@ -45,4 +45,5 @@ $container->set('view', function ($container) use ($app) {
     return $twig;
 });
 
+require_once __DIR__ . '/database.php';
 require_once __DIR__ . '/../routes/web.php';
