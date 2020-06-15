@@ -21,14 +21,14 @@ class HomeController extends Controller
      */
     public function index(Request $request, Response $response, $args)
     {
-        $faker = Factory::create();
-
-        for ($x = 0; $x <= 3000; $x++) {
-            Article::create([
-                'title' => $faker->sentence(10),
-                'body' => $faker->sentence(100),
-            ]);
-        }
+//        $faker = Factory::create();
+//
+//        for ($x = 0; $x <= 3000; $x++) {
+//            Article::create([
+//                'title' => $faker->sentence(10),
+//                'body' => $faker->sentence(100),
+//            ]);
+//        }
 
         return $this->c->get('view')->render($response, 'home/index.twig');
     }

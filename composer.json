@@ -13,7 +13,8 @@
         "slim/psr7": "^0.3.0",
         "php-di/php-di": "^6.0",
         "illuminate/database": "^7.15",
-        "fzaninotto/faker": "^1.9"
+        "fzaninotto/faker": "^1.9",
+        "teamtnt/tntsearch": "^2.3"
     },
     "autoload": {
         "psr-4": {
