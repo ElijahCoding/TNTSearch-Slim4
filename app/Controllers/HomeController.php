@@ -2,7 +2,8 @@
 
 namespace App\Controllers;
 
-use App\Controllers\Controller;
+use App\Models\Article;
+use Faker\Factory;
 use Psr\Http\Message\{
     ServerRequestInterface as Request,
     ResponseInterface as Response
@@ -20,8 +21,15 @@ class HomeController extends Controller
      */
     public function index(Request $request, Response $response, $args)
     {
-        return $this->c->get('view')->render($response, 'home/index.twig', [
-            'appName' => $this->c->get('settings')['app']['name'],
-        ]);
+        $faker = Factory::create();
+
+        for ($x = 0; $x <= 3000; $x++) {
+            Article::create([
+                'title' => $faker->sentence(10),
+                'body' => $faker->sentence(100),
+            ]);
+        }
+
+        return $this->c->get('view')->render($response, 'home/index.twig');
     }
 }
