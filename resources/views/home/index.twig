@@ -1,5 +1,12 @@
 {% extends 'app.twig' %}
 
 {% block content %}
-    Hello from {{ appName }}!
+    {% for article in articles %}
+        <div>
+            <h4>{{ article.title }} (#{{ article.id }})</h4>
+            <div>
+                {{ article.body }}
+            </div>
+        </div>
+    {% endfor %}
 {% endblock %}
