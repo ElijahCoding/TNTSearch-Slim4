@@ -33,13 +33,10 @@ class HomeController extends Controller
 
         ['q' => $q] = $request->getQueryParams() + ['q' => ''];
 
-        $this->c->get('tnt')->selectIndex('articles.index');
-
-        $results = $this->c->get('tnt')->search($q, 12);
-
-        $articles = Article::whereIn('id', $results['ids'])
-            ->orderBy(Manager::connection()->raw('FIELD(id, ' . implode(',', $results['ids']) . ')'))
+        $articles = $this->c->get('search')(Article::class)
+            ->search($q)
             ->get();
+
 
         return $this->c->get('view')->render($response, 'home/index.twig', compact('articles'));
     }

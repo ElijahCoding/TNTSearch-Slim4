@@ -7,6 +7,7 @@ use Slim\Views\TwigExtension;
 use Slim\Psr7\Factory\UriFactory;
 use Dotenv\Exception\InvalidPathException;
 use TeamTNT\TNTSearch\TNTSearch;
+use App\Search\Builder;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
@@ -60,6 +61,12 @@ $container->set('tnt', function ($container) {
     ]);
 
     return $tnt;
+});
+
+$container->set('search', function ($container) {
+    return function ($model) use ($container) {
+        return new Builder($container->get('tnt'), $model);
+    };
 });
 
 require_once __DIR__ . '/database.php';
