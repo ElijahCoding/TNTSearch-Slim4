@@ -27,6 +27,11 @@ class Builder
         return $this;
     }
 
+    public function raw()
+    {
+        return $this->results;
+    }
+
     public function get()
     {
         ['ids' => $ids] = $this->results;

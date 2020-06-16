@@ -37,6 +37,9 @@ class HomeController extends Controller
             ->search($q)
             ->get();
 
+        $raw = $articles->raw();
+
+        $articles = $articles->get();
 
         return $this->c->get('view')->render($response, 'home/index.twig', compact('articles'));
     }
